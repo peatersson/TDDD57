@@ -9,6 +9,7 @@ public class Fighter : MonoBehaviour {
 	FighterHealthBar hp_script;
 	AnimScript anim_script;
 	Player player_script;
+	DamageText damage_script;
 
 	int maxHealth = 400;
 	int currentHealth;
@@ -26,6 +27,7 @@ public class Fighter : MonoBehaviour {
 		hp_script = healthBar.GetComponent<FighterHealthBar>();
 		fighter = GameObject.Find("littleswordfighter");
 		anim_script = fighter.GetComponent<AnimScript>();
+		damage_script = GameObject.Find("Canvas").GetComponent<DamageText>();
 
 		currentHealth = maxHealth;
 		//InvokeRepeating("Update", 0f, 0.3f);
@@ -50,8 +52,9 @@ public class Fighter : MonoBehaviour {
 			//isAttacking = false;
 			hp_script.TakeDamage(damageTaken);
 			currentHealth -= damageTaken;
-			// show damage taken in form of animation
 
+			// show damage taken in form of animation
+			damage_script.TextActive(damageTaken);
 			damageTaken = 0;
 			registeredHit = false;
 		}
