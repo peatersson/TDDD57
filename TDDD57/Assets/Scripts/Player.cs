@@ -9,10 +9,12 @@ public class Player : MonoBehaviour {
 	Fighter fighter_script;
 	GameObject healthBar;
 	HealthBar healthBar_script;
+	ManaBar manaBar_script;
 	GameObject powerUp;
 	PowerUp powerUp_script;
 
 	int maxHealth = 400;
+	int maxMana = 400;
 	int currentHealth;
 	int damage = 5;
 	string currentEffect;
@@ -22,6 +24,7 @@ public class Player : MonoBehaviour {
 		fighter_script = fighter.GetComponent<Fighter>();
 		healthBar = GameObject.Find("HealthBarCanvas");
 		healthBar_script = healthBar.GetComponent<HealthBar>();
+		manaBar_script = healthBar.GetComponent<ManaBar>();
 		powerUp = GameObject.Find("PowerUp");
 		powerUp_script = powerUp.GetComponent<PowerUp>();
 
@@ -33,6 +36,8 @@ public class Player : MonoBehaviour {
 		Click();
 	}
 
+
+
 	void Click(){
 		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
@@ -40,7 +45,8 @@ public class Player : MonoBehaviour {
 			switch (hit.collider.gameObject.name){
 				case "FighterHitBox":
 					fighter = hit.collider.transform.parent.gameObject;
-					fighter_script.SetRegisteredHit(true, damage);
+					int manaLevel = manaBar_script.GetMana(damage);
+					fighter_script.SetRegisteredHit(true, manaLevel);
 					break;
 				case "PowerUp":
 					HandlePowerUp(powerUp_script.GetEffect());
