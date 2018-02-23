@@ -6,11 +6,15 @@ public class FighterHealthBar : MonoBehaviour {
 	public const int maxHealth = 400;
 	public int currentHealth;
 	public Transform healthBar;
+	GameObject cube;
+	GameObject cubeCore;
 	bool isZero = false;
 	int counter = 0;
 
 	void Start () {
 		currentHealth = maxHealth;
+		cube = GameObject.Find("Cube");
+		cubeCore = GameObject.Find("CubeCore");
 	}
 
 	void Update () {
@@ -24,8 +28,11 @@ public class FighterHealthBar : MonoBehaviour {
 			// dead
 			currentHealth = 0;
 			isZero = true;
+			cube.SetActive(false);
+			cubeCore.SetActive(false);
 		}
-
-		healthBar.transform.localScale = new Vector3(tf.localScale.x - amount*2/400f, tf.localScale.y, tf.localScale.z);
+		if(!isZero){
+			healthBar.transform.localScale = new Vector3(tf.localScale.x - amount*2/400f, tf.localScale.y, tf.localScale.z);
+		}
 	}
 }

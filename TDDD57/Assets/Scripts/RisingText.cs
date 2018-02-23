@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RisingText : MonoBehaviour {
-
 	Vector3 newPos;
 
 	// Use this for initialization

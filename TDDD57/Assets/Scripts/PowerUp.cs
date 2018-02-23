@@ -12,7 +12,7 @@ public class PowerUp : MonoBehaviour {
 
 	void Start () {
 		powerUp = GameObject.Find("PowerUp");
-		InvokeRepeating("SpawnRandomPowerUp", 0f, 5f);
+		InvokeRepeating("SpawnRandomPowerUp", 10f, 10f);
 		cam = GameObject.Find("ARCamera");
 
 		//powerUp.SetActive(false);

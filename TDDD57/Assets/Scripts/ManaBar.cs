@@ -8,12 +8,12 @@ public class ManaBar : MonoBehaviour {
 	public int currentMana = maxMana;
 	// Use this for initialization
 	void Start () {
-
+		InvokeRepeating("TickMana", 0f, 0.01f);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		TickMana();
+
 	}
 
 	void TickMana(){
@@ -29,7 +29,7 @@ public class ManaBar : MonoBehaviour {
 	public int GetMana(int damage){
 		Transform tf = manaBar.transform;
 
-		int returnValue = damage*currentMana/maxMana;
+		int returnValue = (int)Mathf.Ceil((float)damage*(float)currentMana/(float)maxMana);
 		manaBar.sizeDelta = new Vector2(currentMana, manaBar.sizeDelta.y);
 		manaBar.transform.position = new Vector3(tf.position.x - (currentMana/2f), tf.position.y, tf.position.z);
 		currentMana = 0;

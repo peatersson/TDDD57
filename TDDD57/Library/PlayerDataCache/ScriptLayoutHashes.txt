@@ -17,6 +17,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 6af7378a45ad6da4992a71ef50ddc2eb UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 9ca6347af5ceb6b0d1c105af31b6722e UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Fighter
+0271f3f02f4d897a7bf34df95653e125 Assembly-CSharp.dll:.ManaBar
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.RisingText
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.FirePlane
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.CamAngle
@@ -338,4 +339,3 @@ d2a2bd333db22f480a8589e167314ecc Vuforia.UnityExtensions.dll:Vuforia.UserDefined
 3d1b89310e77c34bc0c8d7132231345c Vuforia.UnityExtensions.dll:Vuforia.WireframeBehaviour
 05524b8f659e7bfe5756d1335fec24ba Vuforia.UnityExtensions.dll:Vuforia.WireframeTrackableEventHandler
 15bea26698002c6c4a3087131232ce5c Vuforia.UnityExtensions.dll:Vuforia.WordBehaviour
-0271f3f02f4d897a7bf34df95653e125 Assembly-CSharp.dll:.ManaBar

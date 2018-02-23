@@ -6,10 +6,11 @@ public class AnimScript : MonoBehaviour {
 	Animator anim;
 
   void Start(){
-    anim = gameObject.GetComponent<Animator>();
-  }
+		anim = gameObject.GetComponent<Animator>();
+	}
 
   void Update(){
+		anim.SetInteger("stateRandom", Random.Range(1,4));
   }
 
 	public void IsHit(){
@@ -22,5 +23,9 @@ public class AnimScript : MonoBehaviour {
 
 	public void Taunt(){
 		anim.SetTrigger("IsFarAway");
+	}
+
+	public void Dead(){
+		anim.SetTrigger("Dead");
 	}
 }

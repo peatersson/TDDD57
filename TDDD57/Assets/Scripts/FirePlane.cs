@@ -17,7 +17,8 @@ public class FirePlane : MonoBehaviour {
 		firePlane = GameObject.Find("FirePlane");
 		player_script = cam.GetComponent<Player>();
 
-		InvokeRepeating("ChangePosition", 0f, 30f);
+		InvokeRepeating("ChangePosition", 30f, 30f);
+		firePlane.SetActive(false);
 	}
 
 	// Update is called once per frame

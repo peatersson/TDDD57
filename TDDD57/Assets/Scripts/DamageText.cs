@@ -10,7 +10,7 @@ public class DamageText : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		txt = GameObject.Find("Text");
+		txt = GameObject.Find("DamageText");
 	}
 
 	// Update is called once per frame

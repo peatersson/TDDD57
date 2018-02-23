@@ -12,12 +12,15 @@ public class Player : MonoBehaviour {
 	ManaBar manaBar_script;
 	GameObject powerUp;
 	PowerUp powerUp_script;
+	GameObject hp_canvas;
+	IndicateDamage hp_canvas_script;
 
 	int maxHealth = 400;
 	int maxMana = 400;
 	int currentHealth;
-	int damage = 5;
+	int damage = 10;
 	string currentEffect;
+	bool isDead = false;
 
 	void Start(){
 		fighter = GameObject.Find("littleswordfighter");
@@ -27,6 +30,8 @@ public class Player : MonoBehaviour {
 		manaBar_script = healthBar.GetComponent<ManaBar>();
 		powerUp = GameObject.Find("PowerUp");
 		powerUp_script = powerUp.GetComponent<PowerUp>();
+		hp_canvas = GameObject.Find("HealthBarCanvas");
+		hp_canvas_script = hp_canvas.GetComponent<IndicateDamage>();
 
 		currentHealth = maxHealth;
 	}
@@ -44,9 +49,11 @@ public class Player : MonoBehaviour {
 	  if (Physics.Raycast(ray, out hit) && Input.GetMouseButtonDown(0)){
 			switch (hit.collider.gameObject.name){
 				case "FighterHitBox":
-					fighter = hit.collider.transform.parent.gameObject;
-					int manaLevel = manaBar_script.GetMana(damage);
-					fighter_script.SetRegisteredHit(true, manaLevel);
+					if (Vector3.Distance(transform.position, fighter.transform.position) < 2.0){
+						fighter = hit.collider.transform.parent.gameObject;
+						int manaLevel = manaBar_script.GetMana(damage);
+						fighter_script.TakeDamage(manaLevel);
+					}
 					break;
 				case "PowerUp":
 					HandlePowerUp(powerUp_script.GetEffect());
@@ -59,8 +66,17 @@ public class Player : MonoBehaviour {
 	}
 
 	public void TakeDamage(int damageTaken){
-		currentHealth -= damageTaken;
-		healthBar_script.TakeDamage(damageTaken);
+		if (!isDead){
+			currentHealth -= damageTaken;
+
+			if (currentHealth <= 0){
+				currentHealth = 0;
+				isDead = false;
+			}
+
+			healthBar_script.TakeDamage(damageTaken);
+			IndicateDamage();
+		}
 	}
 
 	void HandlePowerUp(string effect){
@@ -80,26 +96,18 @@ public class Player : MonoBehaviour {
 	}
 
 	void IndicateDamage(){
-
+		hp_canvas_script.FlashDamage();
 	}
 }
 
 /*
 TODO:
-- Bättre slumpplacering för powerup - check
-- Storlek/vinkel för powerup - check
-- Annorlunda bilder för powerup - check (heal)
-
-- Zoneffekter - check
-- Slumpa vilken Zon - check
-- Längd för skada - check
-
-- Random attackanimation för riddaren
-- Visa skada tagen för riddaren
 - Visa skada tagen för spelaren
 - Hantering av när riddaren dör
 - Hantering av när spelaren dör
 
-- cooldown för spelarslag
-- visuellt visa cooldown
+- finjustera skada/liv osv
+- elden ska spawna på oss
+- fixa manareg
+- extended tracking
 */

@@ -39,25 +39,8 @@ public class Fighter : MonoBehaviour {
 		// make the fighter look so that he faces the player
 		LookAtPlayer();
 
-		// handle possible hit
-		CheckIfHit();
-
 		// check for Attack
 		CheckForAttack();
-	}
-
-	void CheckIfHit(){
-		if (registeredHit){
-			anim_script.IsHit();
-			//isAttacking = false;
-			hp_script.TakeDamage(damageTaken);
-			currentHealth -= damageTaken;
-
-			// show damage taken in form of animation
-			damage_script.TextActive(damageTaken);
-			damageTaken = 0;
-			registeredHit = false;
-		}
 	}
 
 	void CheckForAttack(){
@@ -66,11 +49,11 @@ public class Fighter : MonoBehaviour {
 			anim_script.Attack();
 
 			if (!isAttacking){
-				//InvokeRepeating("Attack", 0.7f, 0.7f);
+				InvokeRepeating("Attack", 1.4f, 1.4f);
 				isAttacking = true;
 			}
 		} else {
-			//CancelInvoke("Attack");
+			CancelInvoke("Attack");
 			anim_script.Taunt();
 			attackCounter = 0;
 			isAttacking = false;
@@ -83,14 +66,22 @@ public class Fighter : MonoBehaviour {
 		transform.LookAt(pos);
 	}
 
-	public void SetRegisteredHit(bool hit, int damage){
-		registeredHit = hit;
-		damageTaken = damage;
-	}
-
 	void Attack(){
 		if (isAttacking){
 			player_script.TakeDamage(damage);
 		}
+	}
+
+	public void TakeDamage(int damageTaken){
+		currentHealth -= damageTaken;
+		//anim_script.IsHit();
+		hp_script.TakeDamage(damageTaken);
+		damage_script.TextActive(damageTaken);
+
+		if(currentHealth <= 0){
+			anim_script.Dead();
+		}
+		damageTaken = 0;
+		registeredHit = false;
 	}
 }
