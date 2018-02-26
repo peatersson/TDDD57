@@ -9,7 +9,6 @@ public class FighterHealthBar : MonoBehaviour {
 	GameObject cube;
 	GameObject cubeCore;
 	bool isZero = false;
-	int counter = 0;
 
 	void Start () {
 		currentHealth = maxHealth;

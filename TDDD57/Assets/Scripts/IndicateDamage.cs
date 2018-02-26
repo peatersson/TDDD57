@@ -8,37 +8,65 @@ public class IndicateDamage : MonoBehaviour {
 	GameObject right;
 	GameObject upper;
 	GameObject lower;
+	Color red = Color.red;
+	Color green = Color.green;
+	Color current;
 
-	bool isFlashing = false;
+	bool isActive = false;
+	float factor = (float)10/(float)255;
 
 	// Use this for initialization
 	void Start () {
 		left = GameObject.Find("LeftFlash");
+		left.SetActive(false);
 		right = GameObject.Find("RightFlash");
+		right.SetActive(false);
 		upper = GameObject.Find("UpperFlash");
+		upper.SetActive(false);
 		lower = GameObject.Find("LowerFlash");
+		lower.SetActive(false);
 	}
 
 	// Update is called once per frame
 	void Update () {
-		if (isFlashing){
-			right.GetComponent<Image>().color = Color.Lerp(Color.red, Color.clear, Mathf.PingPong(Time.time, 1));
-		} else {
-			right.GetComponent<Image>().color = Color.clear;
+		if (isActive){
+			left.GetComponent<Image>().color = new Color(current.r, current.g, current.b, current.a - factor);
+			right.GetComponent<Image>().color = new Color(current.r, current.g, current.b, current.a - factor);
+			upper.GetComponent<Image>().color = new Color(current.r, current.g, current.b, current.a - factor);
+			lower.GetComponent<Image>().color = new Color(current.r, current.g, current.b, current.a - factor);
+
+			current = left.GetComponent<Image>().color;
 		}
 	}
 
 	public void FlashDamage(){
-		isFlashing = true;
-		InvokeRepeating("Flash", 1f, 1f);
+		StartCoroutine(Flash(red));
 	}
 
 	public void FlashHeal(){
-		right.GetComponent<Image>().color = Color.Lerp(Color.green, Color.clear, 0.5f);
 	}
 
-	void Flash(){
-		isFlashing = false;
-		CancelInvoke("Flash");
+	IEnumerator Flash(Color color){
+		isActive = true;
+		left.SetActive(true);
+		left.GetComponent<Image>().color = color;
+		right.SetActive(true);
+		right.GetComponent<Image>().color = color;
+		upper.SetActive(true);
+		upper.GetComponent<Image>().color = color;
+		lower.SetActive(true);
+		lower.GetComponent<Image>().color = color;
+		current = color;
+
+		//RectTransform rt = left.GetComponent<RectTransform>();
+		
+
+		yield return new WaitForSeconds(0.5f);
+
+		left.SetActive(false);
+		right.SetActive(false);
+		upper.SetActive(false);
+		lower.SetActive(false);
+		isActive = false;
 	}
 }

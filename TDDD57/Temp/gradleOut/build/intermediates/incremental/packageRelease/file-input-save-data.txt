@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu Feb 22 15:53:54 CET 2018
+#Mon Feb 26 16:20:23 CET 2018
 60.set=ASSET
 52.set=ASSET
 53.base=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/assets/release
@@ -277,7 +277,7 @@ count=110
 39.set=ASSET
 85.base=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/transforms/mergeJniLibs/release/folders/2000/1f/main
 23.file=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/assets/release/bin/Data/Managed/mscorlib.dll
-70.file=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/res/resources-release.ap_/res/drawable-hdpi-v4/app_icon.png
+70.file=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/res/resources-release.ap_/res/drawable-xxxhdpi-v4/app_icon.png
 77.file=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/assets/release/bin/Data/Managed/UnityEngine.DirectorModule.dll
 103.set=ASSET
 30.file=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/assets/release/bin/Data/Managed/UnityEngine.UnityWebRequestTextureModule.dll
@@ -318,7 +318,7 @@ count=110
 37.set=ASSET
 29.set=ASSET
 37.base=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/assets/release
-69.file=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/res/resources-release.ap_/res/drawable-xxxhdpi-v4/app_icon.png
+69.file=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/res/resources-release.ap_/res/drawable-hdpi-v4/app_icon.png
 84.base=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/assets/release
 99.set=ASSET
 22.file=/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/assets/release/bin/Data/Resources/unity_builtin_extra

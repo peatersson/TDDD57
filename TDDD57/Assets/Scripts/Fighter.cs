@@ -13,12 +13,13 @@ public class Fighter : MonoBehaviour {
 
 	int maxHealth = 400;
 	int currentHealth;
-	int damage = 25;
+	int damage = 5;
 	bool registeredHit = false;
 	int damageTaken;
 	bool isAttacking = false;
-	int attackCounter = 0;
 	float distanceToPlayer;
+	bool isDead;
+	bool isVictorious;
 
 	void Start () {
 		cam = GameObject.Find("ARCamera");
@@ -28,24 +29,44 @@ public class Fighter : MonoBehaviour {
 		fighter = GameObject.Find("littleswordfighter");
 		anim_script = fighter.GetComponent<AnimScript>();
 		damage_script = GameObject.Find("Canvas").GetComponent<DamageText>();
+		isDead = false;
+		isVictorious = false;
 
 		currentHealth = maxHealth;
-		//InvokeRepeating("Update", 0f, 0.3f);
 	}
 
 	void Update () {
 		distanceToPlayer = Vector3.Distance(transform.position, cam.transform.position);
 
-		// make the fighter look so that he faces the player
-		LookAtPlayer();
+		if (!isDead && !isVictorious){
+			// make the fighter look so that he faces the player
+			LookAtPlayer();
 
-		// check for Attack
-		CheckForAttack();
+			// check for Attack
+			CheckForAttack();
+		}
 	}
 
 	void CheckForAttack(){
-		//Debug.Log("Distance: " + distanceToPlayer);
-		if (distanceToPlayer < 2.0 && distanceToPlayer != 0){
+		if (!isAttacking){
+			if (distanceToPlayer < 2.0 && distanceToPlayer != 0){
+				anim_script.Attack();
+				InvokeRepeating("Attack", 1.4f, 1.4f);
+				isAttacking = true;
+			} else {
+				CancelInvoke("Attack");
+				anim_script.Taunt();
+			}
+		} else {
+			if (distanceToPlayer > 3.0 && distanceToPlayer != 0){
+				CancelInvoke("Attack");
+				anim_script.Taunt();
+				isAttacking = false;
+			} else{
+				anim_script.Attack();
+			}
+		}
+		/*if (distanceToPlayer < 2.0 && distanceToPlayer != 0 || isAttacking){
 			anim_script.Attack();
 
 			if (!isAttacking){
@@ -55,9 +76,8 @@ public class Fighter : MonoBehaviour {
 		} else {
 			CancelInvoke("Attack");
 			anim_script.Taunt();
-			attackCounter = 0;
 			isAttacking = false;
-		}
+		}*/
 	}
 
 	void LookAtPlayer(){
@@ -72,16 +92,25 @@ public class Fighter : MonoBehaviour {
 		}
 	}
 
-	public void TakeDamage(int damageTaken){
-		currentHealth -= damageTaken;
-		//anim_script.IsHit();
-		hp_script.TakeDamage(damageTaken);
-		damage_script.TextActive(damageTaken);
-
-		if(currentHealth <= 0){
-			anim_script.Dead();
-		}
-		damageTaken = 0;
-		registeredHit = false;
+	public void Victorious(){
+		anim_script.Victorious();
+		isVictorious = true;
 	}
+
+	public void TakeDamage(int damageTaken){
+		if (!isDead){
+			currentHealth -= damageTaken;
+			hp_script.TakeDamage(damageTaken);
+			damage_script.TextActive(damageTaken);
+
+			if(currentHealth <= 0){
+				anim_script.Dead();
+				isDead = true;
+			}
+			damageTaken = 0;
+			registeredHit = false;
+		}
+	}
+
+
 }

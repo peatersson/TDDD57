@@ -239,6 +239,7 @@
 'Assets/Scripts/FighterHealthBar.cs'
 'Assets/Scripts/FirePlane.cs'
 'Assets/Scripts/HealthBar.cs'
+'Assets/Scripts/IndicateDamage.cs'
 'Assets/Scripts/ManaBar.cs'
 'Assets/Scripts/Orbit.cs'
 'Assets/Scripts/Player.cs'

@@ -14,13 +14,17 @@ public class Player : MonoBehaviour {
 	PowerUp powerUp_script;
 	GameObject hp_canvas;
 	IndicateDamage hp_canvas_script;
+	GameObject left_indicate;
+	GameObject right_indicate;
 
 	int maxHealth = 400;
 	int maxMana = 400;
 	int currentHealth;
-	int damage = 10;
+	int damage = 200;
 	string currentEffect;
 	bool isDead = false;
+	bool rotateLeft;
+	bool isPowerUpActive;
 
 	void Start(){
 		fighter = GameObject.Find("littleswordfighter");
@@ -32,16 +36,19 @@ public class Player : MonoBehaviour {
 		powerUp_script = powerUp.GetComponent<PowerUp>();
 		hp_canvas = GameObject.Find("HealthBarCanvas");
 		hp_canvas_script = hp_canvas.GetComponent<IndicateDamage>();
+		left_indicate = GameObject.Find("LeftIndication");
+		right_indicate = GameObject.Find("RightIndication");
 
 		currentHealth = maxHealth;
 	}
 
 	void Update(){
-		// generate click
-		Click();
+		if (!isDead){
+			// Look for touch-event and generate click
+			Click();
+			IndicatePowerUp();
+		}
 	}
-
-
 
 	void Click(){
 		ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -71,11 +78,14 @@ public class Player : MonoBehaviour {
 
 			if (currentHealth <= 0){
 				currentHealth = 0;
-				isDead = false;
+				isDead = true;
+				fighter_script.Victorious();
 			}
 
 			healthBar_script.TakeDamage(damageTaken);
-			IndicateDamage();
+			if (damageTaken > 0){
+				IndicateDamage();
+			}
 		}
 	}
 
@@ -98,16 +108,48 @@ public class Player : MonoBehaviour {
 	void IndicateDamage(){
 		hp_canvas_script.FlashDamage();
 	}
+
+	void IndicatePowerUp(){
+		if (isPowerUpActive && !powerUp.GetComponent<MeshRenderer>().isVisible){
+			float anglePowerUp = (Mathf.Atan2(powerUp.transform.position.x, powerUp.transform.position.z) / Mathf.PI) * 180f;
+			float anglePlayer = (Mathf.Atan2(transform.position.x, transform.position.z) / Mathf.PI) * 180f;
+			float fighterToPowerUp = Vector3.Distance(fighter.transform.position, powerUp.transform.position);
+			float fighterToPlayer = Vector3.Distance(fighter.transform.position, transform.position);
+
+			if (anglePowerUp > (anglePlayer + 180)%360){
+				rotateLeft = true;
+			} else {
+				rotateLeft = false;
+			}
+
+			SetIndication();
+
+		} else {
+			left_indicate.SetActive(false);
+			right_indicate.SetActive(false);
+		}
+	}
+
+	public void SetIndication(){
+		if (rotateLeft){
+			if (!left_indicate.activeSelf){
+				left_indicate.SetActive(true);
+			}
+			right_indicate.SetActive(false);
+		} else {
+			if (!right_indicate.activeSelf){
+				right_indicate.SetActive(true);
+			}
+			left_indicate.SetActive(false);
+		}
+	}
+
+	public void SetPowerUp(bool status){
+		isPowerUpActive = status;
+	}
 }
 
 /*
 TODO:
-- Visa skada tagen för spelaren
-- Hantering av när riddaren dör
-- Hantering av när spelaren dör
-
 - finjustera skada/liv osv
-- elden ska spawna på oss
-- fixa manareg
-- extended tracking
 */

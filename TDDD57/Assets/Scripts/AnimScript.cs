@@ -28,4 +28,8 @@ public class AnimScript : MonoBehaviour {
 	public void Dead(){
 		anim.SetTrigger("Dead");
 	}
+
+	public void Victorious(){
+		anim.SetTrigger("Victory");
+	}
 }
