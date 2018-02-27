@@ -18,7 +18,7 @@ public class DamageText : MonoBehaviour {
 	}
 
 
-	public void TextActive(int damage){
+	public void TextActive(float damage){
 		var textChild = Instantiate (txt, transform);
 		textChild.transform.position = new Vector3(0, 0.5f, 0);
 		textChild.GetComponent<Text>().text = "" + damage;

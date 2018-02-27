@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class FighterHealthBar : MonoBehaviour {
-	public const int maxHealth = 400;
-	public int currentHealth;
+	public const float maxHealth = 400;
+	public float currentHealth;
 	public Transform healthBar;
 	GameObject cube;
 	GameObject cubeCore;
@@ -19,7 +19,7 @@ public class FighterHealthBar : MonoBehaviour {
 	void Update () {
 	}
 
-	public void TakeDamage(int amount){
+	public void TakeDamage(float amount){
 		Transform tf = healthBar.transform;
 
 		currentHealth -= amount;

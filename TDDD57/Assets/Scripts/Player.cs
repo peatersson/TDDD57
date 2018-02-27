@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
 	int maxHealth = 400;
 	int maxMana = 400;
 	int currentHealth;
-	int damage = 200;
+	int damage = 5;
 	string currentEffect;
 	bool isDead = false;
 	bool rotateLeft;
@@ -56,10 +56,9 @@ public class Player : MonoBehaviour {
 	  if (Physics.Raycast(ray, out hit) && Input.GetMouseButtonDown(0)){
 			switch (hit.collider.gameObject.name){
 				case "FighterHitBox":
-					if (Vector3.Distance(transform.position, fighter.transform.position) < 2.0){
+					if (Vector3.Distance(transform.position, fighter.transform.position) < 3.0){
 						fighter = hit.collider.transform.parent.gameObject;
-						int manaLevel = manaBar_script.GetMana(damage);
-						fighter_script.TakeDamage(manaLevel);
+						fighter_script.TakeDamage(manaBar_script.GetMana(damage));
 					}
 					break;
 				case "PowerUp":
@@ -152,4 +151,5 @@ public class Player : MonoBehaviour {
 /*
 TODO:
 - finjustera skada/liv osv
+- spara en version där vi tar lite/inge damage
 */

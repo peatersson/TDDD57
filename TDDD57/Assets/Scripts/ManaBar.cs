@@ -25,10 +25,10 @@ public class ManaBar : MonoBehaviour {
 		}
 	}
 
-	public int GetMana(int damage){
+	public float GetMana(int damage){
 		Transform tf = manaBar.transform;
 
-		int returnValue = (int)Mathf.Ceil((float)damage*(float)currentMana/(float)maxMana);
+		float returnValue = Mathf.Ceil((float)damage*(float)currentMana/(float)maxMana);
 		manaBar.sizeDelta = new Vector2(currentMana, manaBar.sizeDelta.y);
 		manaBar.transform.position = new Vector3(tf.position.x - (currentMana/2f), tf.position.y, tf.position.z);
 		currentMana = 0;

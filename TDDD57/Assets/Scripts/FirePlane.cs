@@ -31,7 +31,7 @@ public class FirePlane : MonoBehaviour {
 			angle = Random.Range(-2*Mathf.PI, 2*Mathf.PI);
 
 			transform.position = new Vector3(0.5f*cam.transform.position.x, 0, 0.5f*cam.transform.position.z);
-			InvokeRepeating("CauseDamage", 0f, 0.2f);
+			InvokeRepeating("CauseDamage", 1f, 0.2f);
 		} else {
 			isActive = false;
 			firePlane.SetActive(false);

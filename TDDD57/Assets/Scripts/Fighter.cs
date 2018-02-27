@@ -11,11 +11,9 @@ public class Fighter : MonoBehaviour {
 	Player player_script;
 	DamageText damage_script;
 
-	int maxHealth = 400;
-	int currentHealth;
+	float maxHealth = 400;
+	float currentHealth;
 	int damage = 5;
-	bool registeredHit = false;
-	int damageTaken;
 	bool isAttacking = false;
 	float distanceToPlayer;
 	bool isDead;
@@ -49,7 +47,7 @@ public class Fighter : MonoBehaviour {
 
 	void CheckForAttack(){
 		if (!isAttacking){
-			if (distanceToPlayer < 2.0 && distanceToPlayer != 0){
+			if (distanceToPlayer < 3.0 && distanceToPlayer != 0){
 				anim_script.Attack();
 				InvokeRepeating("Attack", 1.4f, 1.4f);
 				isAttacking = true;
@@ -58,7 +56,7 @@ public class Fighter : MonoBehaviour {
 				anim_script.Taunt();
 			}
 		} else {
-			if (distanceToPlayer > 3.0 && distanceToPlayer != 0){
+			if (distanceToPlayer > 4.0 && distanceToPlayer != 0){
 				CancelInvoke("Attack");
 				anim_script.Taunt();
 				isAttacking = false;
@@ -97,7 +95,7 @@ public class Fighter : MonoBehaviour {
 		isVictorious = true;
 	}
 
-	public void TakeDamage(int damageTaken){
+	public void TakeDamage(float damageTaken){
 		if (!isDead){
 			currentHealth -= damageTaken;
 			hp_script.TakeDamage(damageTaken);
@@ -107,10 +105,6 @@ public class Fighter : MonoBehaviour {
 				anim_script.Dead();
 				isDead = true;
 			}
-			damageTaken = 0;
-			registeredHit = false;
 		}
 	}
-
-
 }

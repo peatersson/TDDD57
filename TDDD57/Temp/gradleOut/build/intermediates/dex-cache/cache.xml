@@ -3,30 +3,30 @@
 
     <item
         is-multidex="false"
-        jar="/Users/n.pettersson/.android/build-cache/c9ecd8b2149bb2615456f7e15a1df1e071771f9f/output/jars/classes.jar"
+        jar="/Users/n.pettersson/.android/build-cache/eaa7c078b531a14df91443cd5b9b13af60eef07d/output/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="27.0.3"
         sha1="e29373b760f2999cd878625efe4641edd156a3d0">
-        <dex dex="/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/pre-dexed/release/classes_dd49f74f0e2a392c4764ec2a141cf473f7008c0a.jar" />
+        <dex dex="/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/pre-dexed/release/classes_7ade09c06a2d7f0ff526742ed1412198607e325f.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="/Users/n.pettersson/.android/build-cache/c9ecd8b2149bb2615456f7e15a1df1e071771f9f/output/jars/libs/VuforiaUnityPlayer.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="27.0.3"
-        sha1="1e5c98f1d2f1973f9a08b7849f319bcb135fe8c3">
-        <dex dex="/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/pre-dexed/release/VuforiaUnityPlayer_676a2cecc5ba0c52241bc324f9f68e4203044ab0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/n.pettersson/.android/build-cache/c9ecd8b2149bb2615456f7e15a1df1e071771f9f/output/jars/libs/Vuforia.jar"
+        jar="/Users/n.pettersson/.android/build-cache/eaa7c078b531a14df91443cd5b9b13af60eef07d/output/jars/libs/Vuforia.jar"
         jumboMode="false"
         optimize="true"
         revision="27.0.3"
         sha1="53094572566d88f826439518bd3ff774b3ed36cb">
-        <dex dex="/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/pre-dexed/release/Vuforia_b53fc65ef07359de6616462ab1ac0ec5e0d6a9f3.jar" />
+        <dex dex="/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/pre-dexed/release/Vuforia_8ad011d9bba9a39dd75c26c8f06216272f83382c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/n.pettersson/.android/build-cache/eaa7c078b531a14df91443cd5b9b13af60eef07d/output/jars/libs/VuforiaUnityPlayer.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="27.0.3"
+        sha1="1e5c98f1d2f1973f9a08b7849f319bcb135fe8c3">
+        <dex dex="/Users/n.pettersson/Projects/TDDD57/TDDD57/TDDD57/Temp/gradleOut/build/intermediates/pre-dexed/release/VuforiaUnityPlayer_31d67f8b5263ab58b59d2fabc9c909558b0977d8.jar" />
     </item>
     <item
         is-multidex="false"
