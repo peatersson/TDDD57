@@ -11,7 +11,6 @@ public class FirePlane : MonoBehaviour {
 	int damage = 1;
 	bool isActive = false;
 
-	// Use this for initialization
 	void Start () {
 		cam = GameObject.Find("ARCamera");
 		firePlane = GameObject.Find("FirePlane");

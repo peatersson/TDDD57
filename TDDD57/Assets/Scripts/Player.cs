@@ -44,7 +44,6 @@ public class Player : MonoBehaviour {
 
 	void Update(){
 		if (!isDead){
-			// Look for touch-event and generate click
 			Click();
 			IndicatePowerUp();
 		}
@@ -89,6 +88,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void HandlePowerUp(string effect){
+		// only health available at the moment
 		switch (effect){
 			case "Health":
 				Heal(50);
@@ -147,9 +147,3 @@ public class Player : MonoBehaviour {
 		isPowerUpActive = status;
 	}
 }
-
-/*
-TODO:
-- finjustera skada/liv osv
-- spara en version där vi tar lite/inge damage
-*/

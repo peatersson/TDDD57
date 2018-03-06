@@ -15,16 +15,12 @@ public class PowerUp : MonoBehaviour {
 		InvokeRepeating("SpawnRandomPowerUp", 15f, 20f);
 		cam = GameObject.Find("ARCamera");
 		player_script = cam.GetComponent<Player>();
-
-		//powerUp.SetActive(false);
 	}
 
 	void Update () {
 	}
 
 	void SpawnRandomPowerUp(){
-		// Generates a random position in the outskirts of the playing field
-		// also tilts the powerup at a random angle, making the game a bit more alive
 		int quadrant = Random.Range(1,5);
 		Vector3 newPos;
 		if (!isActive){

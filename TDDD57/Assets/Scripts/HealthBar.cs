@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthBar : MonoBehaviour {
-	public const int maxHealth = 400;
-	public int currentHealth = maxHealth;
 	public RectTransform healthBar;
 
-	void Start () {
+	public const int maxHealth = 400;
+	public int currentHealth = maxHealth;
 
+	void Start () {
 	}
 
 	void Update () {
@@ -16,10 +16,9 @@ public class HealthBar : MonoBehaviour {
 
 	public void TakeDamage(int amount){
 		Transform tf = healthBar.transform;
-
 		currentHealth -= amount;
-		if (currentHealth <= 0)
-		{
+
+		if (currentHealth <= 0){
 				currentHealth = 0;
 		}
 

@@ -37,10 +37,7 @@ public class Fighter : MonoBehaviour {
 		distanceToPlayer = Vector3.Distance(transform.position, cam.transform.position);
 
 		if (!isDead && !isVictorious){
-			// make the fighter look so that he faces the player
 			LookAtPlayer();
-
-			// check for Attack
 			CheckForAttack();
 		}
 	}

@@ -7,14 +7,12 @@ public class Orbit : MonoBehaviour {
 	float oneDegreeInRadian;
 	public bool direction;
 
-	// Use this for initialization
 	void Start () {
 		currentAngleInRadian = 0;
 		oneDegreeInRadian = Mathf.PI/180;
 		direction = true;
 	}
 
-	// Update is called once per frame
 	void Update () {
 		if (direction){
 			currentAngleInRadian += 0.5f*oneDegreeInRadian;
@@ -22,9 +20,9 @@ public class Orbit : MonoBehaviour {
 			currentAngleInRadian -= 0.5f*oneDegreeInRadian;
 		}
 
-		transform.position = new Vector3( Mathf.Cos(currentAngleInRadian), // x-pos
-																			(float)1, // y-pos
-																			Mathf.Sin(currentAngleInRadian)); // z-pos
+		transform.position = new Vector3( Mathf.Cos(currentAngleInRadian),
+																			(float)1,
+																			Mathf.Sin(currentAngleInRadian));
 
 		if (direction){
 			if (currentAngleInRadian >= 2*Mathf.PI){
@@ -35,6 +33,5 @@ public class Orbit : MonoBehaviour {
 				currentAngleInRadian = 2*Mathf.PI;
 			}
 		}
-
 	}
 }

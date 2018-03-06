@@ -15,7 +15,6 @@ public class IndicateDamage : MonoBehaviour {
 	bool isActive = false;
 	float factor = (float)10/(float)255;
 
-	// Use this for initialization
 	void Start () {
 		left = GameObject.Find("LeftFlash");
 		left.SetActive(false);
@@ -27,7 +26,6 @@ public class IndicateDamage : MonoBehaviour {
 		lower.SetActive(false);
 	}
 
-	// Update is called once per frame
 	void Update () {
 		if (isActive){
 			left.GetComponent<Image>().color = new Color(current.r, current.g, current.b, current.a - factor);
@@ -57,9 +55,6 @@ public class IndicateDamage : MonoBehaviour {
 		lower.SetActive(true);
 		lower.GetComponent<Image>().color = color;
 		current = color;
-
-		//RectTransform rt = left.GetComponent<RectTransform>();
-		
 
 		yield return new WaitForSeconds(0.5f);
 
