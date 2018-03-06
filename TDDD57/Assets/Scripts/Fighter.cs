@@ -13,7 +13,7 @@ public class Fighter : MonoBehaviour {
 
 	float maxHealth = 400;
 	float currentHealth;
-	int damage = 5;
+	int damage = 1;
 	bool isAttacking = false;
 	float distanceToPlayer;
 	bool isDead;
@@ -64,18 +64,6 @@ public class Fighter : MonoBehaviour {
 				anim_script.Attack();
 			}
 		}
-		/*if (distanceToPlayer < 2.0 && distanceToPlayer != 0 || isAttacking){
-			anim_script.Attack();
-
-			if (!isAttacking){
-				InvokeRepeating("Attack", 1.4f, 1.4f);
-				isAttacking = true;
-			}
-		} else {
-			CancelInvoke("Attack");
-			anim_script.Taunt();
-			isAttacking = false;
-		}*/
 	}
 
 	void LookAtPlayer(){
@@ -104,6 +92,7 @@ public class Fighter : MonoBehaviour {
 			if(currentHealth <= 0){
 				anim_script.Dead();
 				isDead = true;
+				CancelInvoke("Attack");
 			}
 		}
 	}

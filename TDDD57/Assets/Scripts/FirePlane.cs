@@ -8,7 +8,7 @@ public class FirePlane : MonoBehaviour {
 	Player player_script;
 
 	float angle;
-	int damage = 10;
+	int damage = 1;
 	bool isActive = false;
 
 	// Use this for initialization

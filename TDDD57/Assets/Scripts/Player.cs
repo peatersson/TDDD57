@@ -20,7 +20,7 @@ public class Player : MonoBehaviour {
 	int maxHealth = 400;
 	int maxMana = 400;
 	int currentHealth;
-	int damage = 5;
+	int damage = 50;
 	string currentEffect;
 	bool isDead = false;
 	bool rotateLeft;
